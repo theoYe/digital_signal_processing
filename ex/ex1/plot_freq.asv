@@ -1,0 +1,11 @@
+A = 444.128;
+alpha = 50*sqrt(2)*pi;
+Omega_0 = 50*sqrt(2)*pi;
+
+
+b = A*Omega_0
+a = [1 2*alpha (alpha^2+Omega_0^2)]
+w = 0:0.1*pi:1000*pi;
+[h, wout] = freqs(b,a,w) ;
+
+plot(wout , abs(h))

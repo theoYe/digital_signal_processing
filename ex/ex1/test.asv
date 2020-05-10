@@ -1,0 +1,42 @@
+close;
+clear all;
+
+A = 444.128;
+alpha = 50*sqrt(2)*pi;
+Omega_0 = 50*sqrt(2)*pi;
+
+
+
+%===================绘制x(t)时域图======================
+tp = 0.0001; % 间隔
+tmax = 0.05;  % 最大绘制点2s
+tm =  [0:tp:tmax]      % 绘制范围, 从0开始, 省略u(t)
+x_at = A.*exp(-alpha.*tm).*sin(Omega_0.*tm)  % 
+
+
+subplot(221);
+plot(tm , x_at);
+xlabel("t");
+ylabel("x(t)")
+
+
+
+%===================绘制幅度响应图======================
+subplot(222);
+b = A*Omega_0   % 分子系数
+a = [1 2*alpha (alpha^2+Omega_0^2)] % 分母系数 
+w = 0:0.1*pi:1000*pi;  % 角频率点位置 
+[h, wout] = freqs(b,a,w);    % 调用freqs 得到幅度响应   
+f = wout/(2*pi);    % 转化为频率
+plot(f,abs(h));  % 绘制图形
+xlabel("f (Hz)")
+ylabel("|X(jw)|")
+
+
+%===================绘制幅度响应图======================
+subplot(223);
+n = tmax/tp;   % 采样点数
+Xaf = fft(x_at, n);
+plot([0:n-1],abs(Xaf));
+
+
