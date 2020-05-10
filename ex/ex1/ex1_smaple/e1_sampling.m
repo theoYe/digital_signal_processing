@@ -15,8 +15,6 @@ fplot( @(t) xa(t), [0, 0.04]);
 xlabel("t");
 ylabel("x(t)")
 
-
-
 %===================绘制幅度响应图======================
 subplot(422);
 b = A*Omega_0   % 分子系数
@@ -25,12 +23,10 @@ w = 0:0.1*pi:1000*pi;  % 角频率点位置
 
 [h, wout] = freqs(b,a,w);    % 调用freqs 得到幅度响应   
 
-f = wout/(2*pi);    % 转化为频率
-plot(f,abs(h));  % 绘制图形
-xlabel("f (Hz)")
+% f = wout/(2*pi);    % 转化为频率
+plot(wout,abs(h));  % 绘制图形
+xlabel("ω (rad/s)")
 ylabel("|X(jw)|")
-
-
 
 %===================以Fs=1000采样 t=nT ======================
 n = 64;  % 采样64点
@@ -64,7 +60,8 @@ xlabel("n    Fs=300Hz");
 ylabel("X(nT)")
 
 
-fft_plot;  % 使用fft的方式恢复频率图
+% fft_plot  % 使用fft的方式绘制频率图
+dtft_plot;  % 使用dtft的方式绘制频率图
 
 
 
