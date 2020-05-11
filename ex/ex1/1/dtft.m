@@ -1,3 +1,6 @@
+% 
+% 计算序列 DTFT
+% 
 function Xw = dtft(xn, w)
 % xn : 采样序列
 % w : 想求的角频率
