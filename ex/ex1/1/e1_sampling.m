@@ -25,8 +25,8 @@ w = 0:0.1*pi:1000*pi;  % 角频率点位置
 
 % f = wout/(2*pi);    % 转化为频率
 plot(wout,abs(h));  % 绘制图形
-xlabel("ω (rad/s)")
-ylabel("|X(jw)|")
+xlabel("\Omega (rad/s)");
+ylabel("|X(jw)|");
 
 %===================以Fs=1000采样 t=nT ======================
 n = 64;  % 采样64点
@@ -35,7 +35,7 @@ xn1 = sample_fun(xa, n, Fs1);
 
 subplot(423)
 stem(xn1);
-xlabel("n    Fs=300Hz");
+xlabel("n    Fs=1000Hz");
 ylabel("X(nT)")
 
 %===================以Fs=300采样 t=nT======================
@@ -56,7 +56,7 @@ xn3 = sample_fun(xa, n, Fs3);
 
 subplot(427)
 stem(xn3);
-xlabel("n    Fs=300Hz");
+xlabel("n    Fs=200Hz");
 ylabel("X(nT)")
 
 
